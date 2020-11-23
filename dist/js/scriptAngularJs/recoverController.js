@@ -12,6 +12,12 @@ app.controller('recoverController', ['$scope', function ($scope) {
                 toastr["error"](`mật khẩu không khớp`);
                 return 0;
         }
+        if($scope.recoverData.password.length<6){
+            toastr["error"](`dai hon 6`);
+            return 0;
+
+
+        }
 		if (isValid) {
             toastr["success"](`thay đổi mật khẩu thành công`);
 		}

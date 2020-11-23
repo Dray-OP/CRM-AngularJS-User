@@ -1,4 +1,4 @@
 ﻿<div>
-    <input class="form-control" type="text" placeholder="Nhập tài khoản" ng-model="name" />
+    <input class="form-control" type="text" placeholder="Nhập tài khoản" ng-keyup="keyUpInput()" ng-model="name" />
     <p class="m-0" ng-show="!check" style="color: red;">{{errorMes}}</p>
 </div>

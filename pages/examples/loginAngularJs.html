@@ -17,55 +17,55 @@
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
   <!-- toast style -->
   <link rel="stylesheet" href="../../dist/css/toastr.css">
+  <!-- css tu viet -->
+  <link rel="stylesheet" href="../../dist/css/admin/login.css">
 </head>
 
 <body class="hold-transition login-page" ng-app="app" ng-controller="loginController">
   <div class="login-box">
     <!-- /.login-logo -->
     <div class="card card-outline card-primary">
-      <div class="card-header text-center">
-        <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+      <div class="card-header">
+        <a href="../../index2.html" class="h2"><b>CRM xin chào</b></a>
       </div>
       <div class="card-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg text-left px-0">Vui lòng đăng nhập bằng tài khoản được cung cấp</p>
 
         <form name="userForm" ng-submit="loginSubmit(userForm.$valid)">
           <div class="input-group form-group mb-3" ng-class="{ 'was-validated' : userForm.name.$invalid && !userForm.name.$pristine }">
-            <input type="text" name="name" class="form-control" placeholder="UserName" ng-model="loginData.userName" required>
+            <input type="text" name="name" class="form-control" placeholder="Tên đăng nhập" ng-model="loginData.userName" required>
 
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
               </div>
             </div>
-            <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="invalid-feedback mb-0">You username is
-              required.
+            <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="invalid-feedback mb-0">Bạn chưa nhập tài khoản
             </p>
           </div>
           
           <div class="input-group form-group mb-3" ng-class="{ 'was-validated' : userForm.password.$invalid && !userForm.password.$pristine }">
-            <input type="password" class="form-control" name="password" placeholder="Password" ng-model="loginData.password" required>
+            <input type="password" class="form-control" name="password" placeholder="Mật khẩu" ng-model="loginData.password" required>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
               </div>
             </div>
-            <p ng-show="userForm.password.$invalid && !userForm.password.$pristine" class="invalid-feedback">You
-              password is required.
+            <p ng-show="userForm.password.$invalid && !userForm.password.$pristine" class="invalid-feedback">Bạn chưa nhập mật khẩu
             </p>
           </div>
           <div class="row">
-            <div class="col-8">
+            <div class="col-7">
               <div class="icheck-primary">
                 <input type="checkbox" id="remember">
                 <label for="remember">
-                  Remember Me
+                  Ghi nhớ đăng nhập
                 </label>
               </div>
             </div>
             <!-- /.col -->
-            <div class="col-4">
-              <button type="submit" class="btn btn-primary btn-block" ng-disabled="userForm.$invalid">Sign In</button>
+            <div class="col-5">
+              <button type="submit" class="btn btn-primary btn-block" ng-disabled="userForm.$invalid">Đăng Nhập</button>
             </div>
             <!-- /.col -->
           </div>
@@ -73,19 +73,19 @@
 
         <div class="social-auth-links text-center mt-2 mb-3">
           <a href="#" class="btn btn-block btn-primary">
-            <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
+            <i class="fab fa-facebook mr-2"></i> Đăng nhập bằng Facebook
           </a>
           <a href="#" class="btn btn-block btn-danger">
-            <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
+            <i class="fab fa-google-plus mr-2"></i> Đăng nhập bằng Google+
           </a>
         </div>
         <!-- /.social-auth-links -->
 
         <p class="mb-1">
-          <a href="forgot-password.html">I forgot my password</a>
+          <a href="forgot-password.html">Quên mật khẩu?</a>
         </p>
         <p class="mb-0">
-          <a href="register.html" class="text-center">Register a new membership</a>
+          <a href="register.html" class="text-center">Đăng kí tài khoản mới</a>
         </p>
       </div>
       <!-- /.card-body -->

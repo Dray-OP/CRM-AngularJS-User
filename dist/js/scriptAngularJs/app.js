@@ -11,7 +11,7 @@ app.controller('loginController', ['$scope', function ($scope) {
 
 		if (isValid) {
 			if ($scope.loginData.userName == "admin" && $scope.loginData.password == "1") {
-				toastr["success"](`Đăng nhập thanh công`);
+				toastr["success"](`Đăng nhập thành công`);
 
 			} else {
 				toastr["error"](`tài khoản hoặc mật khẩu không chính xác`);
