@@ -17,8 +17,10 @@
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
   <!-- toast style -->
   <link rel="stylesheet" href="../../dist/css/toastr.css">
-  <!-- css tu viet -->
+  <!-- css -->
   <link rel="stylesheet" href="../../dist/css/admin/login.css">
+  <link rel="stylesheet" href="../../dist/css/admin/showHidePassword.css">
+
 </head>
 
 <body class="hold-transition login-page" ng-app="app" ng-controller="loginController">
@@ -45,7 +47,8 @@
           </div>
           
           <div class="input-group form-group mb-3" ng-class="{ 'was-validated' : userForm.password.$invalid && !userForm.password.$pristine }">
-            <input type="password" class="form-control" name="password" placeholder="Mật khẩu" ng-model="loginData.password" required>
+            <input id="password-field" type="password" class="form-control" name="password" placeholder="Mật khẩu" ng-model="loginData.password" required>
+            <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password" ng-class="{ 'd-none' : userForm.password.$invalid && !userForm.password.$pristine }"></span>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
@@ -105,6 +108,8 @@
   <script src="../../dist/js/scriptAngularJs/app.js"></script>
   <!-- toast -->
   <script src="../../dist/js/toastr.js"></script>
+<!-- js -->
+<script src="../../dist/js/admin/recover.js"></script>
 
 </body>
 
