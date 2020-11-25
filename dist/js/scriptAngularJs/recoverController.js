@@ -5,6 +5,7 @@ app.controller('recoverController', ['$scope', function ($scope) {
         password: "",
         confirmPassword: ""
 	};
+	$scope.showHidePassword =  showHidePassword();
 
 	$scope.recoverSubmit = function (isValid) {
 		console.log($scope.recoverData);
@@ -22,3 +23,14 @@ app.controller('recoverController', ['$scope', function ($scope) {
 		
 	}
 }]);
+function showHidePassword() {
+    $(".toggle-password").click(function () {
+        $(this).toggleClass("fa-eye fa-eye-slash");
+        var input = $($(this).attr("toggle"));
+        if (input.attr("type") == "password") {
+            input.attr("type", "text");
+        } else {
+            input.attr("type", "password");
+        }
+    });
+}

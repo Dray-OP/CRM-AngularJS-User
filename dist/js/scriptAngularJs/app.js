@@ -5,10 +5,8 @@ app.controller('loginController', ['$scope', function ($scope) {
 		userName: "",
 		password: ""
 	};
-
+	$scope.showHidePassword =  showHidePassword();
 	$scope.loginSubmit = function (isValid) {
-		console.log($scope.loginData);
-
 		if (isValid) {
 			if ($scope.loginData.userName == "admin" && $scope.loginData.password == "1") {
 				toastr["success"](`Đăng nhập thành công`);
@@ -28,3 +26,14 @@ app.controller('loginController', ['$scope', function ($scope) {
 		// });
 	}
 }]);
+function showHidePassword() {
+    $(".toggle-password").click(function () {
+        $(this).toggleClass("fa-eye fa-eye-slash");
+        var input = $($(this).attr("toggle"));
+        if (input.attr("type") == "password") {
+            input.attr("type", "text");
+        } else {
+            input.attr("type", "password");
+        }
+    });
+}

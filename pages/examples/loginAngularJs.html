@@ -66,7 +66,7 @@
                 ng-class="{ 'was-validated' : userForm.password.$invalid && !userForm.password.$pristine }">
                 <input id="password-field" type="password" class="form-control" name="password" placeholder="Mật khẩu"
                   ng-model="loginData.password" required>
-                <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"
+                <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password" ng-click="showHidePassword()"
                   ng-class="{ 'd-none' : userForm.password.$invalid && !userForm.password.$pristine }"></span>
                 <div class="input-group-append">
                   <div class="input-group-text">
@@ -135,7 +135,7 @@
   <!-- toast -->
   <script src="../../dist/js/toastr.js"></script>
   <!-- js -->
-  <script src="../../dist/js/admin/recover.js"></script>
+  <script src="../../dist/js/admin/showHidePassword.js"></script>
 
 </body>
 
