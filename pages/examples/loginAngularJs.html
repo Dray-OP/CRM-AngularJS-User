@@ -47,11 +47,8 @@
             <p class="login-box-msg text-left px-0">Vui lòng đăng nhập bằng tài khoản được cung cấp</p>
 
             <form name="userForm" ng-submit="loginSubmit(userForm.$valid)">
-              <div class="input-group form-group mb-3"
-                ng-class="{ 'was-validated' : userForm.name.$invalid && !userForm.name.$pristine }">
-                <input type="text" name="name" class="form-control" placeholder="Tên đăng nhập"
-                  ng-model="loginData.userName" required>
-
+              <div class="input-group form-group mb-3" ng-class="{ 'was-validated' : userForm.name.$invalid && !userForm.name.$pristine }">
+                <input type="text" name="name" class="form-control" placeholder="Tên đăng nhập" ng-model="loginData.userName" required>
                 <div class="input-group-append">
                   <div class="input-group-text">
                     <span class="fas fa-envelope"></span>
