@@ -17,6 +17,18 @@
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
   <!-- toast style -->
   <link rel="stylesheet" href="../../dist/css/toastr.css">
+  <style>
+    .box-camera {
+      bottom: 0;
+      left: 55%;
+      padding: 0px 5px 0 5px; 
+      background: rgb(233, 227, 227, 0.3);
+      border-radius: 100%;
+    }
+    .box-camera:hover {
+      background: rgb(233, 227, 227, 0.5);
+    }
+  </style>
 </head>
 
 <body class="hold-transition sidebar-mini " ng-app="app" ng-controller="profileController">
@@ -829,25 +841,28 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-3">
-
               <!-- Profile Image -->
               <div class="card card-primary card-outline">
                 <div class="card-body box-profile">
-
                   <h3 class="profile-username text-center">Tâm Băng</h3>
                   <h4 class="text-muted text-center">abc(ID:1234)</h4>
-                  <div class="text-center">
-                    <img class="profile-user-img img-fluid img-circle" src="../../dist/img/user4-128x128.png"
-                      alt="User profile picture">
+                  <div class="text-center position-relative">
+                    <img class="profile-user-img img-fluid img-circle" src="../../dist/img/user4-128x128.png"alt="User profile picture">
+                    <!-- box camera -->
+                    <div class="dropright position-absolute box-camera">
+                      <i type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false" class="fas fa-camera"></i>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Xem ảnh</a>
+                        <a class="dropdown-item" href="#">Tải ảnh lên</a>
+                      </div>
+                    </div>
                   </div>
-
-
                   <p class="text-muted text-center">Software Engineer</p>
-
                   <div class="card">
                     <div class="card-header">
-                      <h3 class="profile-username text-center"><i class="fa fa-key" aria-hidden="true">&nbsp;&nbsp; </i> Quyền</h3>
-
+                      <h3 class="profile-username text-center"><i class="fa fa-key" aria-hidden="true">&nbsp;&nbsp; </i>
+                        Quyền</h3>
                     </div>
                     <div class="card-body"></div>
                   </div>
@@ -855,7 +870,6 @@
                 <!-- /.card-body -->
               </div>
               <!-- /.card -->
-
             </div>
             <!-- /.col -->
             <div class="col-md-9">
@@ -864,7 +878,8 @@
                   <ul class="nav nav-pills">
                     <!-- <li class="nav-item"><a class="nav-link" href="#activity" data-toggle="tab">Activity</a></li>
                   <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Timeline</a></li> -->
-                    <li class="nav-item"><a class="nav-link active" href="#settings" data-toggle="tab">Chỉnh sửa</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#settings" data-toggle="tab">Chỉnh sửa</a>
+                    </li>
                   </ul>
                 </div><!-- /.card-header -->
                 <div class="card-body">
@@ -872,45 +887,56 @@
                     <div class="tab-pane active" id="settings">
 
                       <form name="profileForm" class="form-horizontal" ng-submit="profileSubmit(profileForm.$valid)">
-                        <div class="form-group row" ng-class="{ 'was-validated' : profileForm.name.$invalid && !profileForm.name.$pristine }">
-                          <label for="inputName" class="col-sm-2 col-form-label">Họ tên <span class="text-danger">*</span> :</label>
+                        <div class="form-group row"
+                          ng-class="{ 'was-validated' : profileForm.name.$invalid && !profileForm.name.$pristine }">
+                          <label for="inputName" class="col-sm-2 col-form-label">Họ tên <span
+                              class="text-danger">*</span> :</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" name="name" id="inputName" placeholder="Họ tên" ng-model="profileData.name" required>
+                            <input type="text" class="form-control" name="name" id="inputName" placeholder="Họ tên"
+                              ng-model="profileData.name" required>
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-sm-2 col-form-label">Giới tính:</label>
                           <div class="col-sm-2">
-                            <input type="radio" name="gender" value="nam" id="male" ng-model="profileData.gender" checked><label for="male"> &nbsp; &nbsp; Nam</label> 
+                            <input type="radio" name="gender" value="nam" id="male" ng-model="profileData.gender"
+                              checked><label for="male"> &nbsp; &nbsp; Nam</label>
                           </div>
                           <div class="col-sm-2">
-                            <input type="radio" name="gender" value="nữ" id="female" ng-model="profileData.gender"><label for="female"> &nbsp; &nbsp; Nữ</label> 
+                            <input type="radio" name="gender" value="nữ" id="female"
+                              ng-model="profileData.gender"><label for="female"> &nbsp; &nbsp; Nữ</label>
                           </div>
                         </div>
-                        
+
                         <div class="form-group row">
                           <label for="inputBirdDay" class="col-sm-2 col-form-label">Ngày sinh:</label>
                           <div class="col-sm-10">
-                            <input type="date" class="form-control" id="inputBirdDay" placeholder="" ng-model="profileData.birdDay">
+                            <input type="date" class="form-control" id="inputBirdDay" placeholder=""
+                              ng-model="profileData.birdDay">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label for="inputCMND" class="col-sm-2 col-form-label">Số CMND:</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputCMND" placeholder="CMND" ng-model="profileData.cardID"></input>
+                            <input type="text" class="form-control" id="inputCMND" placeholder="CMND"
+                              ng-model="profileData.cardID"></input>
                           </div>
                         </div>
                         <div class="form-group row">
                           <label for="inputAddress" class="col-sm-2 col-form-label">Địa chỉ:</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputAddress" ng-model="profileData.address" placeholder="25 Vũ Ngọc Phan">
+                            <input type="text" class="form-control" id="inputAddress" ng-model="profileData.address"
+                              placeholder="25 Vũ Ngọc Phan">
                           </div>
                         </div>
 
-                        <div class="form-group row" ng-class="{ 'was-validated' : profileForm.email.$invalid && !profileForm.email.$pristine }">
-                          <label for="inputEmail" class="col-sm-2 col-form-label">Email <span class="text-danger">*</span> :</label>
+                        <div class="form-group row"
+                          ng-class="{ 'was-validated' : profileForm.email.$invalid && !profileForm.email.$pristine }">
+                          <label for="inputEmail" class="col-sm-2 col-form-label">Email <span
+                              class="text-danger">*</span> :</label>
                           <div class="col-sm-10">
-                            <input type="email" name="email" class="form-control" id="inputEmail" ng-model="profileData.email" placeholder="abc@gmail.com" required>
+                            <input type="email" name="email" class="form-control" id="inputEmail"
+                              ng-model="profileData.email" placeholder="abc@gmail.com" required>
                           </div>
                         </div>
                         <!-- <div class="form-group row" ng-class="{ 'was-validated' : profileForm.phoneNumber.$invalid && !profileForm.phoneNumber.$pristine }">
@@ -919,10 +945,13 @@
                             <input type="text" name="phoneNumber" class="form-control" id="inputPhone" ng-model="profileData.phoneNumber" placeholder="012345678">
                           </div>
                         </div> -->
-                        <div class="form-group row" ng-class="{ 'was-validated' : profileForm.phone.$invalid && !profileForm.phone.$pristine  }">
-                          <label for="inputPhone" class="col-sm-2 col-form-label">Số điện thoại <span class="text-danger">*</span> :</label>
+                        <div class="form-group row"
+                          ng-class="{ 'was-validated' : profileForm.phone.$invalid && !profileForm.phone.$pristine  }">
+                          <label for="inputPhone" class="col-sm-2 col-form-label">Số điện thoại <span
+                              class="text-danger">*</span> :</label>
                           <div class="col-sm-10">
-                            <input type="number" ng-keyup="keyUpInput()" class="form-control" name="phone" id="inputName" placeholder="012345678" ng-model="profileData.phoneNumber" required>
+                            <input type="number" ng-keyup="keyUpInput()" class="form-control" name="phone"
+                              id="inputName" placeholder="012345678" ng-model="profileData.phoneNumber" required>
                           </div>
                         </div>
 
@@ -937,8 +966,10 @@
                         </div> -->
                         <div class="form-group row">
                           <div class="offset-sm-2 col-sm-10">
-                            <button type="submit" class="btn btn-danger"><i class="fas fa-save">&nbsp;&nbsp;</i>Lưu</button>
-                            <button type="button" class="btn btn-primary"><i class="fa fa-key" aria-hidden="true">&nbsp;&nbsp;</i> Đổi mật khẩu</button>
+                            <button type="submit" class="btn btn-danger"><i
+                                class="fas fa-save">&nbsp;&nbsp;</i>Lưu</button>
+                            <button type="button" class="btn btn-primary"><i class="fa fa-key"
+                                aria-hidden="true">&nbsp;&nbsp;</i> Đổi mật khẩu</button>
                           </div>
                         </div>
                       </form>
