@@ -35,6 +35,7 @@
       text-align: center;
       color: #aaa;
     }
+    
   </style>
 </head>
 
@@ -84,8 +85,8 @@
               <!-- collapse -->
               <div>
                 <div>
-                  <a class="btn w-100 row text-left" data-toggle="collapse" href="#show-user" role="button"
-                    aria-expanded="false" aria-controls="show-user">
+                  <a class="btn w-100 row text-left active" data-toggle="collapse" href="#show-user" role="button"
+                    aria-expanded="false" aria-controls="show-user" >
                     <span class="offset-sm-2"></span>
                     <i class="fas fa-user col-sm-3"></i>
                     <span class="col-sm-4">User</span>
@@ -117,30 +118,25 @@
                 </div>
                 <div>
                   <!-- Thêm danh mục -->
-                  <i class="fas fa-plus-square text-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:30px" ></i>
+                  <i class="fas fa-plus-square text-primary" ng-show="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:30px" ></i>
                   <div class="dropdown-menu">
-                    <form class="px-4 py-3">
-                      <div class="form-group">
-                        <label for="exampleDropdownFormAddress1">Địa chỉ</label>
-                        <input type="text" class="form-control" id="exampleDropdownFormAddress1" placeholder="">
+                    <div class="px-4 py-3" >
+                      <div class="form-group" ng-repeat="item in filterDataSettingUsersEmptyValue" >
+                        <label for="exampleDropdownFormAddress1">{{item.name}}</label>
+                        <input type="{{item.type}}" class="form-control" id="exampleDropdownFormAddress1" placeholder="" ng-model="dataSettingUsers[item.id-1].value">
                       </div>
-                      <div class="form-group">
-                        <label for="exampleDropdownFormDate1">Ngày sinh</label>
-                        <input type="date" class="form-control" id="exampleDropdownFormDate1" placeholder="">
-                      </div>
-                      <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                      <button type="submit" class="btn btn-primary" ng-click="confirmAdd(filterDataSettingUsersEmptyValue)">Lưu thay đổi</button>
                       <button type="reset" class="btn btn-secondary">Hủy</button>
-                    </form>
+                    </div>
                     <div class="dropdown-divider"></div>
                   </div>
                 </div>
               </div>
 
               <!-- user -->
-              <div class="collapse  mt-3" id="show-user" data-parent="#accordionExample">
+              <div class="collapse show mt-3" id="show-user" data-parent="#accordionExample">
                 <!-- box user -->
-                
-                <div class="content-box-edit card-body border-bottom w-75" ng-repeat="item in dataSettingUser">
+                <div class="content-box-edit card-body border-bottom w-75" ng-repeat="item in filterDataSettingUsersHasValue">
                     <div class="row " >
                       <div class="col-3">
                         <span class="">
@@ -154,7 +150,7 @@
                       </div>
                       <div class="col-3 d-flex justify-content-end">
                         <span class="">
-                          <i class="fas fa-edit mr-3" data-toggle="collapse" data-target="#{{item.key}}"
+                          <i class="fas fa-edit mr-3" ng-click="dataChange = item.value" data-toggle="collapse" data-target="#{{item.key}}"
                             aria-expanded="true" aria-controls="{{item.key}}"></i>
                             <!-- delete col -->
                           <i class="fas fa-trash-alt" data-toggle="modal" data-target="#delete-col-{{item.id}}"></i>
@@ -172,7 +168,8 @@
                                     <p>Bạn có chắc muốn xóa mục <span class="text-lowercase">{{item.name}}</span> </p>
                                   </div>
                                   <div>
-                                    <button type="button" class="btn btn-primary"></button>Xác nhận</button>
+                                    <!-- thoát khỏi focus thì dùng blur -->
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-blur="confirmDelete(item)">Xác nhận</button>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
                                   </div>
                                   
@@ -186,23 +183,22 @@
                     </div>
                     <!-- hiển thị chỉnh sửa box user -->
                     <div id="{{item.key}}" class="collapse" aria-labelledby="headingOne">
-                      <div class="form-group row">
-                        <div class="offset-sm-3"></div>
-                        <label for="" class="col-sm-2 col-form-label">{{item.name}}</label>:</label>
-                        <div class="col-sm-3">
-                          <input type="text" class="form-control" placeholder="Abc123" ng-model="item.value" ng-focus="outFocus(item)" value="{{item.value}}">
+                        <div class="form-group row">
+                          <div class="offset-sm-3"></div>
+                          <label for="" class="col-sm-2 col-form-label">{{item.name}}</label>:</label>
+                          <div class="col-sm-3">
+                            <input type="{{item.type}}" class="form-control" placeholder="Abc123" ng-model="item.value" ng-focus="outFocus(item)" value="item.value"  required>
+                          </div>
                         </div>
-                      </div>
-                      <div class="form-group row">
-                        <div class="offset-sm-4"></div>
-                        <div class="col">
-                   
-                          <button type="button" class="btn btn-primary mr-3" data-toggle="collapse" data-target="#{{item.key}}"
-                          aria-expanded="true" aria-controls="{{item.key}}" ng-click="submitEdit()">Lưu thay đổi</button>
-                          <button type="reset" class="btn btn-secondary" data-toggle="collapse" data-target="#{{item.key}}"
-                          aria-expanded="true" aria-controls="{{item.key}}" ng-click="cancelAction(item)">Hủy</button>
+                        <div class="form-group row">
+                          <div class="offset-sm-4"></div>
+                          <div class="col">
+                            <button type="submit" class="btn btn-primary mr-3" data-toggle="collapse" data-target="#{{item.key}}"
+                            aria-expanded="true" aria-controls="{{item.key}}" ng-click="submitEdit()" ng-disabled="item.value==undefined || item.value==''" >Lưu thay đổi</button>
+                            <button type="reset" class="btn btn-secondary" data-toggle="collapse" data-target="#{{item.key}}"
+                            aria-expanded="true" aria-controls="{{item.key}}" ng-click="cancelAction(item)">Hủy</button>
+                          </div>
                         </div>
-                      </div>
                     </div>
                   </div>
                 <!--end box user -->
@@ -219,7 +215,7 @@
                 </div>
               </div>
               <!-- Ngôn ngữ -->
-              <div class="collapse show" id="show-language" data-parent="#accordionExample">
+              <div class="collapse" id="show-language" data-parent="#accordionExample">
                 <div class="content-box-edit card-body border-bottom w-75">
                   <div class="row">
                     <div class="col-3">
