@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | Blank Page</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  
+  <style>
+    .has-search-right {
+      position: relative;
+    }
+
+    .has-search-right .form-control {
+      padding-right: 2.375rem;
+    }
+
+    .has-search-right .form-control-feedback {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 2;
+      display: block;
+      width: 2.375rem;
+      height: 2.375rem;
+      line-height: 2.375rem;
+      text-align: center;
+      color: #aaa;
+    }
+  </style>
+</head>
+
+<body class="hold-transition sidebar-mini" ng-app="myApp" ng-controller="myCtrl">
+  <!-- Site wrapper -->
+  <div class="wrapper">
+    <!-- Navbar -->
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <!-- code ở đây nè -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Cài Đặt</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">Blank Page</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+
+      <!-- Main content -->
+      <section class="content">
+
+        <!-- Default box -->
+        <div class="container-fluid">
+          <!-- accordionExample để đóng cái Collapse -->
+          <div class="row" id="accordionExample">
+            <div class="col-md-2 border-right">
+              <div class="content-header">
+                <h3>Danh mục</h3>
+              </div>
+              <div class="form-group has-search-right">
+                <a href="#" class="form-control-feedback"><span class="fa fa-search"></span></a>
+                <input type="text" class="form-control" placeholder="Search">
+              </div>
+              <!-- collapse -->
+              <div>
+                <div>
+                  <a class="btn w-100 row text-left" data-toggle="collapse" href="#show-user" role="button"
+                    aria-expanded="false" aria-controls="show-user">
+                    <span class="offset-sm-2"></span>
+                    <i class="fas fa-user col-sm-3"></i>
+                    <span class="col-sm-4">User</span>
+                  </a>
+                </div>
+                <div>
+                  <a class="btn w-100 row text-left" data-toggle="collapse" href="#show-customer" role="button"
+                    aria-expanded="false" aria-controls="show-customer">
+                    <span class="offset-sm-2"></span>
+                    <i class="fas fa-users col-sm-3"></i>
+                    <span class="col-sm-4">Khách Hàng</span>
+                  </a>
+                </div>
+                <div>
+                  <a class="btn w-100 row text-left" data-toggle="collapse" href="#show-language" role="button"
+                    aria-expanded="false" aria-controls="show-language">
+                    <span class="offset-sm-2"></span>
+                    <i class="fas fa-globe-asia col-sm-3"></i>
+                    <span class="col-sm-4">Ngôn ngữ</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!-- phần cài đặt người dùng -->
+            <div class="col-md-10">
+              <div class="box-header border-bottom border-dark d-flex justify-content-between mt-3 pb-2">
+                <div>
+                  <h3>Cài đặt danh mục người dùng</h3>
+                </div>
+                <div>
+                  <!-- Thêm danh mục -->
+                  <i class="fas fa-plus-square text-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:30px" ></i>
+                  <div class="dropdown-menu">
+                    <form class="px-4 py-3">
+                      <div class="form-group">
+                        <label for="exampleDropdownFormAddress1">Địa chỉ</label>
+                        <input type="text" class="form-control" id="exampleDropdownFormAddress1" placeholder="">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleDropdownFormDate1">Ngày sinh</label>
+                        <input type="date" class="form-control" id="exampleDropdownFormDate1" placeholder="">
+                      </div>
+                      <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                      <button type="reset" class="btn btn-secondary">Hủy</button>
+                    </form>
+                    <div class="dropdown-divider"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- user -->
+              <div class="collapse  mt-3" id="show-user" data-parent="#accordionExample">
+                <!-- box user -->
+                
+                <div class="content-box-edit card-body border-bottom w-75" ng-repeat="item in dataSettingUser">
+                    <div class="row " >
+                      <div class="col-3">
+                        <span class="">
+                          {{item.name}}
+                        </span>
+                      </div>
+                      <div class="col-6">
+                        <span>
+                          {{item.value}}
+                        </span>
+                      </div>
+                      <div class="col-3 d-flex justify-content-end">
+                        <span class="">
+                          <i class="fas fa-edit mr-3" data-toggle="collapse" data-target="#{{item.key}}"
+                            aria-expanded="true" aria-controls="{{item.key}}"></i>
+                            <!-- delete col -->
+                          <i class="fas fa-trash-alt" data-toggle="modal" data-target="#delete-col-{{item.id}}"></i>
+                          <div class="modal fade" id="delete-col-{{item.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLongTitle">Xóa</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-footer">
+                                  <div class="card-body col">
+                                    <p>Bạn có chắc muốn xóa mục <span class="text-lowercase">{{item.name}}</span> </p>
+                                  </div>
+                                  <div>
+                                    <button type="button" class="btn btn-primary"></button>Xác nhận</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                                  </div>
+                                  
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                            <!--end delete col -->
+                        </span>
+                      </div>
+                    </div>
+                    <!-- hiển thị chỉnh sửa box user -->
+                    <div id="{{item.key}}" class="collapse" aria-labelledby="headingOne">
+                      <div class="form-group row">
+                        <div class="offset-sm-3"></div>
+                        <label for="" class="col-sm-2 col-form-label">{{item.name}}</label>:</label>
+                        <div class="col-sm-3">
+                          <input type="text" class="form-control" placeholder="Abc123" ng-model="item.value" ng-focus="outFocus(item)" value="{{item.value}}">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="offset-sm-4"></div>
+                        <div class="col">
+                   
+                          <button type="button" class="btn btn-primary mr-3" data-toggle="collapse" data-target="#{{item.key}}"
+                          aria-expanded="true" aria-controls="{{item.key}}" ng-click="submitEdit()">Lưu thay đổi</button>
+                          <button type="reset" class="btn btn-secondary" data-toggle="collapse" data-target="#{{item.key}}"
+                          aria-expanded="true" aria-controls="{{item.key}}" ng-click="cancelAction(item)">Hủy</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <!--end box user -->
+
+               
+
+              </div>
+              <!-- Khách hàng -->
+              <div class="collapse" id="show-customer" data-parent="#accordionExample">
+                <div class="card card-body">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus esse molestiae atque saepe, incidunt
+                  facere dolorum, quisquam provident natus porro velit molestias. Voluptatibus architecto deserunt
+                  mollitia magnam saepe officiis maiores!
+                </div>
+              </div>
+              <!-- Ngôn ngữ -->
+              <div class="collapse show" id="show-language" data-parent="#accordionExample">
+                <div class="content-box-edit card-body border-bottom w-75">
+                  <div class="row">
+                    <div class="col-3">
+                      <span class="">
+                        Ngôn ngữ
+                      </span>
+                    </div>
+                    <div class="col-6">
+                      <!-- <span ng-repeat="x in dataSettingLanguage | filter: x.model  "> -->
+                           {{dataSettingLanguage.language[dataSettingLanguage.model-1].name}} 
+                      <!-- </span> -->
+                    </div>
+                    <div class="col-3 d-flex justify-content-end">
+                      <span class="">
+                        <i class="fas fa-edit mr-3" data-toggle="collapse" data-target="#edit-language"
+                          aria-expanded="true" aria-controls="edit-language"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div id="edit-language" class="collapse" aria-labelledby="headingOne">
+                    <div class="form-group row">
+                      <div class="offset-sm-4"></div>
+                      <!-- <div class="offset-sm-2"></div> -->
+                      <!-- <label for="" class="col-sm-2 col-form-label">Ngôn ngữ</label> -->
+                      <div class="col-sm-3">
+                        <label class="mr-sm-2" for="inlineFormCustomSelect">Ngôn ngữ hiển thị</label>
+                      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" ng-model="dataSettingLanguage.model" >
+                        <option ng-repeat="option in dataSettingLanguage.language" value="{{option.id}}"  >{{option.name}}</option>
+                      </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="offset-sm-4"></div>
+                      <div class="col">
+                        <button type="button" class="btn btn-primary mr-3" ng-click="dataSettingLanguage.oldModel  = dataSettingLanguage.model" data-toggle="collapse" data-target="#edit-language"
+                        aria-expanded="true" aria-controls="edit-language">Lưu thay đổi</button>
+                        <button type="button" class="btn btn-secondary" ng-click="cancelLanguage()" data-toggle="collapse" data-target="#edit-language"
+                        aria-expanded="true" aria-controls="edit-language">Hủy</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.card -->
+
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <footer class="main-footer">
+      <div class="float-right d-none d-sm-block">
+        <b>Version</b> 3.1.0-rc
+      </div>
+      <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    </footer>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->
+
+  <!-- jQuery -->
+  <script src="../../plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="../../dist/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="../../dist/js/demo.js"></script>
+  
+    <!-- angular js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="./demoDirectiveCategory.js"></script>
+  </body>
+</body>
+
+</html>
