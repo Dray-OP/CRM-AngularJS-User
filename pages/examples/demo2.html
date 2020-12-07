@@ -87,24 +87,24 @@
                 <div>
                   <a class="btn w-100 row text-left active" data-toggle="collapse" href="#show-user" role="button"
                     aria-expanded="false" aria-controls="show-user" >
-                    <span class="offset-sm-2"></span>
-                    <i class="fas fa-user col-sm-3"></i>
+                    <span class="offset-sm-1"></span>
+                    <i class="fas fa-user col-sm-2"></i>
                     <span class="col-sm-4">User</span>
                   </a>
                 </div>
                 <div>
                   <a class="btn w-100 row text-left" data-toggle="collapse" href="#show-customer" role="button"
                     aria-expanded="false" aria-controls="show-customer">
-                    <span class="offset-sm-2"></span>
-                    <i class="fas fa-users col-sm-3"></i>
+                    <span class="offset-sm-1"></span>
+                    <i class="fas fa-users col-sm-2"></i>
                     <span class="col-sm-4">Khách Hàng</span>
                   </a>
                 </div>
                 <div>
                   <a class="btn w-100 row text-left" data-toggle="collapse" href="#show-language" role="button"
                     aria-expanded="false" aria-controls="show-language">
-                    <span class="offset-sm-2"></span>
-                    <i class="fas fa-globe-asia col-sm-3"></i>
+                    <span class="offset-sm-1"></span>
+                    <i class="fas fa-globe-asia col-sm-2"></i>
                     <span class="col-sm-4">Ngôn ngữ</span>
                   </a>
                 </div>
@@ -150,8 +150,8 @@
                       </div>
                       <div class="col-3 d-flex justify-content-end">
                         <span class="">
-                          <i class="fas fa-edit mr-3" ng-click="dataChange = item.value" data-toggle="collapse" data-target="#{{item.key}}"
-                            aria-expanded="true" aria-controls="{{item.key}}"></i>
+                          <i class="fas fa-edit mr-3" ng-click="dataChange = item.value && cancelAction(item)" data-toggle="collapse" data-target="#{{item.key}}"
+                            aria-expanded="true" aria-controls="{{item.key}}" ></i>
                             <!-- delete col -->
                           <i class="fas fa-trash-alt" data-toggle="modal" data-target="#delete-col-{{item.id}}"></i>
                           <div class="modal fade" id="delete-col-{{item.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

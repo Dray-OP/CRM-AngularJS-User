@@ -14,6 +14,7 @@ var ctrl = app.controller("myCtrl", function($scope) {
     // $scope.dataSettingUsers
 
     $scope.filterDataSettingUsersHasValue   = $scope.dataSettingUsers.filter(x=>x.value!='');
+    
     $scope.filterDataSettingUsersEmptyValue = $scope.dataSettingUsers.filter(x=>x.value=='');
 
     $scope.dataSettingLanguage ={
