@@ -150,7 +150,7 @@
                       </div>
                       <div class="col-3 d-flex justify-content-end">
                         <span class="">
-                          <i class="fas fa-edit mr-3" ng-click="dataChange = item.value && cancelAction(item)" data-toggle="collapse" data-target="#{{item.key}}"
+                          <i class="fas fa-edit mr-3"  data-toggle="collapse" ng-click="dataChange = '' " data-target="#{{item.key}}"
                             aria-expanded="true" aria-controls="{{item.key}}" ></i>
                             <!-- delete col -->
                           <i class="fas fa-trash-alt" data-toggle="modal" data-target="#delete-col-{{item.id}}"></i>
@@ -169,8 +169,8 @@
                                   </div>
                                   <div>
                                     <!-- thoát khỏi focus thì dùng blur -->
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-blur="confirmDelete(item)">Xác nhận</button>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-blur="confirmDelete(item) ">Xác nhận</button>
+                                    <button type="button" class="btn btn-secondary" ng-click="dataChange = item.value " data-dismiss="modal">Hủy</button>
                                   </div>
                                   
                                 </div>
@@ -194,9 +194,9 @@
                           <div class="offset-sm-4"></div>
                           <div class="col">
                             <button type="submit" class="btn btn-primary mr-3" data-toggle="collapse" data-target="#{{item.key}}"
-                            aria-expanded="true" aria-controls="{{item.key}}" ng-click="submitEdit()" ng-disabled="item.value==undefined || item.value==''" >Lưu thay đổi</button>
+                            aria-expanded="true" aria-controls="{{item.key}}" ng-click="submitEdit() " ng-disabled="item.value==undefined || item.value==''" >Lưu thay đổi</button>
                             <button type="reset" class="btn btn-secondary" data-toggle="collapse" data-target="#{{item.key}}"
-                            aria-expanded="true" aria-controls="{{item.key}}" ng-click="cancelAction(item)">Hủy</button>
+                            aria-expanded="true" aria-controls="{{item.key}}" ng-click="cancelAction(item) ">Hủy</button>
                           </div>
                         </div>
                     </div>

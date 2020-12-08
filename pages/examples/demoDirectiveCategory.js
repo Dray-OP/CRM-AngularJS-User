@@ -36,13 +36,18 @@ var ctrl = app.controller("myCtrl", function($scope) {
     // }
 
     $scope.dataChange = '';
+    console.log($scope.dataChange);
     // khi focus thì nhận dữ liệu vào dataChange
     $scope.outFocus = function(item){
-        console.log(item);
         $scope.dataChange = item.value; 
+        console.log($scope.dataChange);
     }
 
+    $scope.showHideIconEditDelete = true
+        console.log($scope.showHideIconEditDelete)
+        
     $scope.cancelAction = function(item){
+        $scope.dataChange = '';
         if(!$scope.dataChange == ''){
             item.value = $scope.dataChange; 
         }
