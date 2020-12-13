@@ -5,17 +5,16 @@
 
 </head>
 
-<body ng-app="app">
+<body ng-app="mainApp">
 
-    <div ng-controller="appController">
+    <div ng-controller="people">
+        <ul>
+            <h2>Lorem ipsum dolor sit amet.</h2>
+            <li ng-repeat="person in persons">
+                {{person.Name + ' : '+ person.Age}}
+            </li>
+        </ul>
 
-        <p>Input something in the input box:</p>a
-
-        <br>
-        <form class=""></form>
-            <text name="appData.username"></text>
-            <button type="submit" ng-click="appSubmit()" class="btn btn-primary btn-block">Sign In</button>
-        </form>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 

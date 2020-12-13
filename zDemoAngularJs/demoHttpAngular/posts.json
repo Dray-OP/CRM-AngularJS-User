@@ -1,0 +1,12 @@
+{
+    "records": [
+      {
+        "title" : "AngularJS AJAX - $http",
+        "content" : "$http is an AngularJS service for reading data from remote servers.",
+      },
+      {
+        "title" : "Requesting JSON data with AJAX",
+        "content" : "You wish to fetch JSON data via AJAX request and render it.",
+      }
+    ]
+    }
