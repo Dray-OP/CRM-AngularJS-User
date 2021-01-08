@@ -8,13 +8,11 @@
 <body ng-app="mainApp">
 
     <div ng-controller="people">
-        <ul>
-            <h2>Lorem ipsum dolor sit amet.</h2>
-            <li ng-repeat="person in persons">
-                {{person.Name + ' : '+ person.Age}}
-            </li>
-        </ul>
+        name    <input type="text" ng-model="name"><br>
+        age    <input type="text" ng-model="age"><br>
+        address    <input type="text" ng-model="address"><br>
 
+        <input type="button" value="Send" ng-click="postData(name,age,address)">
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
